@@ -56,7 +56,7 @@ check_command "dch" "debhelper"
 check_command "lsb_release" "lsb-release"
 
 pecl_name="cassandra"
-version=$(header_version_full "../version.h")
+version=$(header_version "../version.h")
 build="+ca1"
 release=1$build
 dist=$(lsb_release -s -c)
@@ -98,7 +98,7 @@ cp -r $debian_dir "build/$base/debian"
 
 pushd "build/$base"
 echo "Updating changlog"
-dch -M --create --package "php$php_version-cassandra-driver" -v "$version-$release" -D $dist "Version $version"
+dch -M --create --package "php$php_version-cassandra" -v "$version-$release" -D $dist "Version $version"
 echo "Building package:"
 nprocs=$(grep -e '^processor' -c /proc/cpuinfo)
 DEB_BUILD_OPTIONS="parallel=$nprocs" debuild -e PHP_VERSION="$php_version" -i -b -uc -us 
