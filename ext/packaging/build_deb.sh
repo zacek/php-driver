@@ -57,7 +57,8 @@ check_command "lsb_release" "lsb-release"
 
 pecl_name="cassandra"
 version=$(header_version_full "../version.h")
-release=1
+build="+ca1"
+release=1$build
 dist=$(lsb_release -s -c)
 base="php-driver-$version"
 files="config.m4 php_driver.c php_driver.h php_driver_globals.h php_driver_types.h version.h src util"
